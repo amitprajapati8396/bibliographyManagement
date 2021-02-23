@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<title>home page</title>
+</head>
+<body style="background-color: background">
+   <div style="text-align:center">
+     <hr><h1>WELCOME TO HOME PAGE</h1><hr>
+   </div>
+   <div style="background-color:silver;"> 
+      <h1>Authors</h1>
+      <a th:href="@{/add}">add new author</a>|<a th:href="@{/showPublication}">showPublication</a>
+      <table border="1">
+    <tr>
+        <th>Author_ID</th>
+        <th>Author_Name</th>
+        <th>Country</th>
+                
+    </tr>
+    
+    <tr th:each = "author: ${authors}">
+        <td th:text="${author.id}"></td>
+        <td th:text="${author.name}"></td>
+        <td th:text="${author.country}"></td>
+     </tr>
+   </table>
+   </div>
+     <div style="background-color:silver;">
+     <form th:object="${author}" th:action="@{/searchAuthor}" method="post">
+       <h2>Search Author here !!</h2>
+        <input type="text" name="name" id="name" th:value="${name}" placeholder="enter Author name here..."/>
+        <input type="submit" value="Search"/>
+        <div th:if="${not #lists.isEmpty(name)}">
+            <h2>Students List</h2>
+            <table class="table table-striped">
+                <tr>
+                    <th>Id</th>
+                    <th>Name</th>
+                    <th>Country</th>
+                </tr>
+                <tr th:each="author: ${name}">
+                    <td th:text="${author.id}">idStudent</td>
+                    <td th:text="${author.name}">name</td>
+                    <td th:text="${author.country}">country</td>
+                </tr>
+            </table>
+        </div>
+    </form>
+    </div>
+</body>
+</html>

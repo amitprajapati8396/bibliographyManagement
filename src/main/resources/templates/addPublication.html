@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<title>addAuthor</title>
+</head>
+<body  style="background-color:aqua">
+   <h1>Add new Publication</h1><hr>
+   <div>
+     <form action="" th:action="@{/savePublication}" th:object="${publication}" th:method="post">
+       <input type="text" th:field="*{name}" placeholder="Enter publication name..."><br><br>
+      
+       <input type="submit" value="save_publication">
+     </form>
+   </div>
+</body>
+</html>

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<title>publication</title>
+</head>
+   <body style="background-color: background">
+   <div style="text-align:center">
+     <hr><h1>WELCOME TO PUBLICATIONS</h1><hr>
+   </div>
+   <div style="background-color:silver;"> 
+      <h1>Publications</h1>
+      <a th:href="@{/addPublication}">add new Publication</a>
+      <table border="1">
+    <tr>
+        <th>Publication_ID</th>
+        <th>Publication_Name</th>
+        <th>Author_Name</th>
+                
+    </tr>
+    
+    <tr th:each = "publication: ${publications}">
+        <td th:text="${publication.id}"></td>
+        <td th:text="${publication.name}"></td>
+        <td th:text="${publication.author}"></td>
+     </tr>
+   </table>
+   </div>
+    
+</body>
+</html>
